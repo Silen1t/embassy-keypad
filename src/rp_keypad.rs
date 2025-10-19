@@ -1,16 +1,21 @@
 #![no_std]
-use embassy_rp::gpio::{ Input, Output, AnyPin, Level, Pull };
+use embassy_rp::gpio::{Input, Level, Output};
 use embassy_time::{ Duration, Timer };
-
 pub struct Keypad<'a, const ROWS: usize, const COLS: usize> {
     rows: [Output<'a>; ROWS],
     cols: [Input<'a>; COLS],
 }
 
 impl<'a, const ROWS: usize, const COLS: usize> Keypad<'a, ROWS, COLS> {
-    pub fn new(row_pins: [AnyPin; ROWS], col_pins: [AnyPin; COLS]) -> Self {
-        let rows = row_pins.map(|pin| Output::new(pin, Level::High));
-        let cols = col_pins.map(|pin| Input::new(pin, Pull::Up));
+    pub fn new(
+        rows: [Output<'a>; ROWS],
+        cols: [Input<'a>; COLS],
+    ) -> Self
+    {
+        let rows = rows.map(|mut output|{
+            output.set_level(Level::High);
+            output
+        });
 
         Self { rows, cols }
     }

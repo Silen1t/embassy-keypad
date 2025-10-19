@@ -90,8 +90,3 @@ The driver uses a row-scanning technique:
 3. Reads all column states
 4. Returns the first detected keypress
 5. Resets the row to HIGH before moving to the next
-
-## License
-
-MIT OR Apache-2.0
-
