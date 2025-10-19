@@ -5,7 +5,7 @@ A `no_std` async keypad driver for Raspberry Pi Pico using Embassy framework.
 ## Features
 
 - 🚀 Fully async/await compatible with Embassy
-- 🔌 Support for matrix keypads (4x4 by default, configurable)
+- 🔌 Support for matrix keypads 4x4 
 - ⚡ Efficient row-scanning with debouncing
 - 🎯 Zero-allocation design for embedded systems
 - 📦 `no_std` compatible
