@@ -16,7 +16,7 @@ Add to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-rp_keypad = { git="https://github.com/Silen1t/rp-keypad.git" }
+rp_keypad = { git = "https://github.com/Silen1t/rp-keypad.git" }
 ```
 
 ### Basic Example
