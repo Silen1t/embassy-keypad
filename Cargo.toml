@@ -1,5 +1,5 @@
 [package]
-name = "embassy-keypad"
+name = "rp_keypad"
 version = "0.1.0"
 edition = "2024"
 
@@ -11,5 +11,5 @@ embassy-time = { version = ">=0.4", features = [
 embassy-rp = { version = ">=0.4", features = ["defmt", "unstable-pac", "time-driver", "critical-section-impl", "rp2040"] }
 
 [lib]
-name = "embassy-keypad"
-path = "src/keypad.rs"
+name = "rp_keypad"
+path = "src/rp_keypad.rs"

@@ -1,4 +1,4 @@
-# embassy-keypad
+# rp-keypad
 
 A `no_std` async keypad driver for Raspberry Pi Pico using Embassy framework.
 
@@ -16,7 +16,7 @@ Add to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-embassy-keypad = { path = "path/to/embassy-keypad" }
+rp_keypad = { git="https://github.com/Silen1t/rp-keypad.git" }
 ```
 
 ### Basic Example
