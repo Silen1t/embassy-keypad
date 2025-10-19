@@ -35,21 +35,21 @@ use ::{ defmt_rtt as _, panic_probe as _ };
 async fn main(_spawner: Spawner) {
     let p: Peripherals = embassy_rp::init(Default::default());
     
-    // Initialize keypad with row and column pins
+    // Create keypad with row outputs and column inputs
     let mut keypad = Keypad::new(
         // Row pins (outputs): GPIO 2, 3, 4, 5
         [
-            AnyPin::from(p.PIN_2),
-            AnyPin::from(p.PIN_3),
-            AnyPin::from(p.PIN_4),
-            AnyPin::from(p.PIN_5),
+            Output::new(p.PIN_2, Level::High),
+            Output::new(p.PIN_3, Level::High),
+            Output::new(p.PIN_4, Level::High),
+            Output::new(p.PIN_5, Level::High),
         ],
         // Column pins (inputs): GPIO 6, 7, 8, 9
         [
-            AnyPin::from(p.PIN_6),
-            AnyPin::from(p.PIN_7),
-            AnyPin::from(p.PIN_8),
-            AnyPin::from(p.PIN_9)
+            Input::new(p.PIN_6, Pull::Up),
+            Input::new(p.PIN_7, Pull::Up),
+            Input::new(p.PIN_8, Pull::Up),
+            Input::new(p.PIN_9, Pull::Up),
         ]
     );
 
@@ -63,6 +63,14 @@ async fn main(_spawner: Spawner) {
     }
 }
 ```
+
+### Important Notes
+
+⚠️ **Critical:** The `Level` for row outputs and `Pull` for column inputs must match the example above:
+- Use `Level::High` for all row `Output` pins
+- Use `Pull::Up` for all column `Input` pins
+
+This ensures proper key detection. When a key is pressed, the row output drives the column input to the opposite state (High→Low or Low→High), which is detected as a key press.
 
 ## Hardware Setup
 
